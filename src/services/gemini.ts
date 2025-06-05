@@ -6,7 +6,12 @@ export class GeminiService {
   private model: string = "gemini-2.0-flash";
 
   private constructor() {
-    this.ai = new GoogleGenerativeAI("AIzaSyCtxWP_T_pGUsthLNef02AemkERFjwojpw");
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      console.error("Gemini API key is not set. Please add VITE_GEMINI_API_KEY to your .env file.");
+      throw new Error("Gemini API key is not set. Please add VITE_GEMINI_API_KEY to your .env file.");
+    }
+    this.ai = new GoogleGenerativeAI(apiKey);
   }
 
   public static getInstance(): GeminiService {
@@ -24,7 +29,12 @@ export class GeminiService {
       return response.text();
     } catch (error) {
       console.error("Error generating response from Gemini:", error);
-      return "I apologize, but I'm having trouble generating a response right now.";
+      if (error instanceof Error) {
+        if (error.message.includes("API key")) {
+          return "Error: Invalid or missing Gemini API key. Please check your .env file.";
+        }
+      }
+      return "I apologize, but I'm having trouble generating a response right now. Please try again later.";
     }
   }
 }
