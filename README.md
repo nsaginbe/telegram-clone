@@ -44,12 +44,11 @@ npm install
 VITE_GEMINI_API_KEY=your_api_key_here
 ```
 
-4. Start the development server:
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+4. Deploy to Vercel:
+   - Push your code to GitHub
+   - Import your repository in Vercel
+   - Add your Gemini API key in Vercel's environment variables
+   - Deploy!
 
 ## Project Structure
 
