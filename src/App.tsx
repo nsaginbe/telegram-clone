@@ -5,7 +5,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { AppProvider, useApp } from './context/AppContext';
 
 function AppContent() {
-  const { state, dispatch } = useApp();
+  const { dispatch } = useApp();
 
   useEffect(() => {
     // Set initial theme

@@ -20,7 +20,7 @@ export class AIService {
     return AIService.instance;
   }
 
-  async generateResponse(message: Message): Promise<Message> {
+  async generateResponse(): Promise<Message> {
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
 

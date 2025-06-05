@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
-import type { AppState, User, Chat, Message } from '../types';
+import type { AppState, Chat, Message } from '../types';
 import { mockUsers, mockChats, mockMessages } from '../mocks/data';
 
 type Action =
